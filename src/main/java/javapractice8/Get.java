@@ -10,7 +10,7 @@ import java.net.URL;
 import java.sql.SQLException;
 
 public class Get {
-    public void getUsersFromJPH(){
+    public void getUsersFromJPH() {
         int i = 0;
         Create create = new Create();
         try {
@@ -32,18 +32,18 @@ public class Get {
                 email = object.getString("email");
                 phone = object.getString("phone");
                 website = object.getString("website");
-                create.newUser(id,name,username,email,phone,website);
+                create.newUser(id, name, username, email, phone, website);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SQLException throwables) {
+            System.out.println(Thread.currentThread().getName() + " users data from jsonplaceholder received");
+            Thread.sleep(1000);
+            System.out.println(Thread.currentThread().getName() + " successfully added to db");
+        } catch (SQLException | ClassNotFoundException | InterruptedException | IOException throwables) {
             throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            System.out.println(Thread.currentThread().getName() + " thread unexpected error");
         }
     }
 
-    public void getPostsFromJPH(){
+    public void getPostsFromJPH() {
         int i = 0;
         Create create = new Create();
         try {
@@ -64,18 +64,18 @@ public class Get {
                 userId = object.getInt("id");
                 title = object.getString("title");
                 body = object.getString("body");
-                create.newPost(userId,id,title,body);
+                create.newPost(userId, id, title, body);;
             }
-        } catch (IOException e) {
+            System.out.println(Thread.currentThread().getName() + " posts data from jsonplaceholder received");
+            Thread.sleep(1000);
+            System.out.println(Thread.currentThread().getName() + " successfully added to db");
+        } catch (IOException | SQLException | ClassNotFoundException | InterruptedException e) {
             e.printStackTrace();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            System.out.println(Thread.currentThread().getName() + " thread unexpected error");
         }
     }
 
-    public void getCommentsFromJPH(){
+    public void getCommentsFromJPH() {
         int i = 0;
         Create create = new Create();
         try {
@@ -97,16 +97,15 @@ public class Get {
                 name = object.getString("name");
                 email = object.getString("email");
                 body = object.getString("body");
-                create.newComment(postId,id,name,email,body);
+                create.newComment(postId, id, name, email, body);
             }
-        } catch (IOException e) {
+            System.out.println(Thread.currentThread().getName() + " users data from jsonplaceholder received");
+            Thread.sleep(1000);
+            System.out.println(Thread.currentThread().getName() + " successfully added to db");
+        } catch (IOException | SQLException | ClassNotFoundException | InterruptedException e) {
             e.printStackTrace();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            System.out.println(Thread.currentThread().getName() + " thread unexpected error");
         }
     }
-
 }
 
